@@ -3,11 +3,15 @@ package main
 import "fmt"
 
 func main() {
-	xs := []float64{98, 93, 77, 82, 83}
+	blockchain := NewBlockchain()
 
-	total := 0.0
-	for _, v := range xs {
-		total += v
+	blockchain.AddBlock("1 hackcoin to Hendrik")
+	blockchain.AddBlock("1 hackcoin to Peter")
+
+	for _, block := range blockchain.blocks {
+		fmt.Printf("Prev. hash: %x\n", block.PrevBlockHash)
+		fmt.Printf("Data: %s\n", block.Data)
+		fmt.Printf("Hash: %x\n", block.Hash)
+		fmt.Println()
 	}
-	fmt.Println(total / float64(len(xs)))
 }
